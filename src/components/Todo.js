@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+
 import db from '../firebase';
 import './Todo.css'
+
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { List, Button, Modal, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -59,8 +61,8 @@ function Todo(props) {
                     </ListItemAvatar>
                     <ListItemText primary={props.todo.todo} secondary="Efficiency is key" />
                 </ListItem>
-                <button onClick={e => setOpen(true)}>Edit</button>
-                <DeleteForeverIcon onClick={event => db.collection('react-todo-app-7641e-default-rtdb').doc(props.todo.id).delete()}>Delete</DeleteForeverIcon>
+                <button onClick={e => handleOpen(true)}>Edit</button>
+                <DeleteForeverIcon onClick={event => db.collection('todos').doc(props.todo.id).delete()}>Delete</DeleteForeverIcon>
             </List>
         </>
     )

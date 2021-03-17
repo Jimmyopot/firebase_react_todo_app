@@ -13,7 +13,7 @@ function App() {
   // fetching data from database
   useEffect(() => {
     // this code fires once app.js loads
-    db.collection('react-todo-app-7641e-default-rtdb').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+    db.collection('todos').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
       // eslint-disable-next-line no-lone-blocks
       setTodos(snapshot.docs.map(doc => ({id: doc.id,todo: doc.data().todo})))
     })
@@ -23,7 +23,7 @@ function App() {
     // this will fire off once we click button
     event.preventDefault()
 
-    db.collection('react-todo-app-7641e-default-rtdb').add({
+    db.collection('todos').add({
       todo: input,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     })
